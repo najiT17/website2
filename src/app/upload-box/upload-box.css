@@ -1,0 +1,36 @@
+.upload-box {
+
+  width: 300px;
+  height: 300px;
+
+  border: 2px dashed #345d5d;
+  border-radius: 20px;
+
+  margin: 50px auto;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  transition: 0.2s;
+
+  color: #7FD2BA;
+}
+.custom-upload {
+  color: #7FD2BA;
+  cursor: pointer;
+  font-size: 18px;
+  text-decoration: underline;
+}
+.upload-box.dragging {
+  background: rgba(79, 209, 197, 0.1);
+  border-color: #7FD2BA;
+  transform: scale(1.02);
+}
+.custom-upload:hover {
+  opacity: 0.8;
+}

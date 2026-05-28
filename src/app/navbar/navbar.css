@@ -1,0 +1,25 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  color: #7FD2BA;
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.links a {
+  color: #7FD2BA;
+  cursor: pointer;
+  font-size: 18px;
+  text-decoration: underline;
+  transition: 0.2s;
+}
+
+.links a:hover {
+  opacity: 0.8;
+}

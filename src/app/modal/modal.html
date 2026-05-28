@@ -1,0 +1,30 @@
+<div class="overlay">
+
+  <div class="modal">
+
+    <button class="close"
+      (click)="close.emit()">
+      ✕
+    </button>
+
+    <h1>
+      {{ mode === 'signup'
+          ? 'Create an account'
+          : 'Login' }}
+    </h1>
+
+    <input type="email" placeholder="Email">
+
+    <input type="password" placeholder="Password">
+
+    <button class="signup-btn">
+
+      {{ mode === 'signup'
+          ? 'Sign up'
+          : 'Login' }}
+
+    </button>
+
+  </div>
+
+</div>

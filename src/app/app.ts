@@ -1,12 +1,37 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+
+import { NavbarComponent } from './navbar/navbar';
+import { HeroComponent } from './hero/hero';
+import { UploadBoxComponent } from './upload-box/upload-box';
+import { ModalComponent } from './modal/modal';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+
+  standalone: true,
+
+  imports: [
+    NavbarComponent,
+    HeroComponent,
+    UploadBoxComponent,
+    ModalComponent,
+    CommonModule,
+
+  ],
+
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css']
 })
+
 export class App {
-  protected readonly title = signal('seb');
+  modalType: 'login' | 'signup' | null = null;
+
+  openModal(type: 'login' | 'signup') {
+    this.modalType = type;
+  }
+
+  closeModal() {
+    this.modalType = null;
+  }
 }
