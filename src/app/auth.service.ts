@@ -1,50 +1,53 @@
-import { Injectable } from '@angular/core';
+import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 
-
 interface AuthResponse {
   token?: string;
+  username?: string;
   message: string;
 }
-
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private baseUrl = 'http://localhost:5000';
+  private isBrowser: boolean;
 
-
-  constructor(private http: HttpClient) {}
-
-
+  constructor(
+    private http: HttpClient,
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   register(username: string, password: string): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.baseUrl}/register`, { username, password });
   }
 
-
-
   login(username: string, password: string): Observable<AuthResponse> {
-    
     return this.http.post<AuthResponse>(`${this.baseUrl}/login`, { username, password }).pipe(
       tap(res => {
-        if (res.token) {
+        if (res.token && this.isBrowser) {
           localStorage.setItem('token', res.token);
         }
       })
     );
   }
 
-
   logout(): void {
-    localStorage.removeItem('token');
+    if (this.isBrowser) localStorage.removeItem('token');
   }
+
   getToken(): string | null {
-    return localStorage.getItem('token');
+    return this.isBrowser ? localStorage.getItem('token') : null;
   }
+
   isLoggedIn(): boolean {
     return !!this.getToken();
   }
 
-
+  getUsername(): string | null {
+    return this.isBrowser ? localStorage.getItem('username') : null;
+  }
 }

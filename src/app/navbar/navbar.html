@@ -7,13 +7,18 @@
 
  <div class="links">
 
-  <a (click)="openAuth.emit('signup')">
-    SignUp
-  </a>
 
-  <a (click)="openAuth.emit('login')">
-    LogIn
-  </a>
+
+  <div class="links" *ngIf="!authService.isLoggedIn()">
+    <a (click)="openAuth.emit('signup')">Sign Up</a>
+    <a (click)="openAuth.emit('login')">Log In</a>
+  </div>
+
+  <div class="links" *ngIf="authService.isLoggedIn()">
+    <span>{{ authService.getUsername() }}</span>
+    
+  </div>
+
 
 </div>
 
