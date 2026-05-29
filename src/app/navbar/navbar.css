@@ -17,7 +17,7 @@
   cursor: pointer;
   font-size: 18px;
   text-decoration: underline;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
 .links a:hover {
