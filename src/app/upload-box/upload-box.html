@@ -1,28 +1,46 @@
 <div
   class="upload-box"
   [class.dragging]="isDragging"
-
   (dragover)="onDragOver($event)"
   (dragleave)="onDragLeave()"
   (drop)="onDrop($event)"
 >
 
-  <p>📁</p>
+@if (!isLoading() && !result()) {
+  <ng-container>
+    <p>📁</p>
+    <p>Drag & drop an image</p>
+    <p>or</p>
+    <label for="file-upload" class="custom-upload">Choose file</label>
+    <input id="file-upload" type="file" hidden accept="image/*" (change)="onFileSelected($event)" />
+  </ng-container>
+}
+  
+@if (isLoading()) {
+  <ng-container>
+    <p>⏳ Analysing your inverter...</p>
+  </ng-container>
+}
+@if (result()) {
+  <ng-container>
+    <h3>{{ result()?.details.manufacturer }} {{ result()?.details.model }}</h3>
+    <p>{{ result()?.details.description }}</p>
+    <ul>
+      <li>Category: {{ result()?.details.category }}</li>
+      <li>Rated power: {{ result()?.details.rated_power_w }}W</li>
+      <li>Max input voltage: {{ result()?.details.max_input_voltage_v }}V</li>
+      <li>Phase: {{ result()?.details.phase }}</li>
+      <li>Battery compatible: {{ result()?.details.battery_compatible }}</li>
+      <li>Hybrid: {{ result()?.details.hybrid }}</li>
+    </ul>
+    <a *ngIf="result()?.details.datasheet_url" [href]="result()?.details.datasheet_url" target="_blank">📄 Datasheet</a>
+    <br/>
+    <label for="file-upload" class="custom-upload">Try another</label>
+    <input id="file-upload" type="file" hidden accept="image/*" (change)="onFileSelected($event)" />
+  </ng-container>
+}
 
-  <p>Drag & drop an image</p>
-
-  <p>or</p>
-
-  <label for="file-upload" class="custom-upload">
-    Choose file
-  </label>
-
-  <input
-    id="file-upload"
-    type="file"
-    hidden
-    accept="image/*"
-    (change)="onFileSelected($event)"
-  />
-
+@if (error) {
+  <p class="error" *ngIf="error">{{ error }}</p>
+}  
 </div>
