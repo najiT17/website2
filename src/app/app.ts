@@ -34,4 +34,9 @@ export class App {
   closeModal() {
     this.modalType = null;
   }
+
+  onAuthSuccess() {
+  console.log('Logged in! Token:', localStorage.getItem('token'));
+  this.closeModal();
+}
 }

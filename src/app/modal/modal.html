@@ -1,30 +1,29 @@
 <div class="overlay">
-
   <div class="modal">
-
-    <button class="close"
-      (click)="close.emit()">
-      ✕
-    </button>
+    <button class="close" (click)="close.emit()">✕</button>
 
     <h1>
-      {{ mode === 'signup'
-          ? 'Create an account'
-          : 'Login' }}
+      {{ mode === 'signup' ? 'Create an account' : 'Login' }}
     </h1>
+    
+    <!-- <p class="message error" *ngIf="errorMessage">{{ errorMessage }}</p>
+    <p class="message success" *ngIf="successMessage">{{ successMessage }}</p> -->
 
-    <input type="email" placeholder="Email">
+    <input
+      type="text"
+      placeholder="Username"
+      [(ngModel)]="username"
+      [disabled]="isLoading"
+    />
+    <input
+      type="password"
+      placeholder="Password"
+      [(ngModel)]="password"
+      [disabled]="isLoading"
+    />
 
-    <input type="password" placeholder="Password">
-
-    <button class="signup-btn">
-
-      {{ mode === 'signup'
-          ? 'Sign up'
-          : 'Login' }}
-
+    <button class="signup-btn" (click)="onSubmit()" [disabled]="isLoading">
+      {{ isLoading ? 'Loading...' : (mode === 'signup' ? 'Sign up' : 'Login') }}
     </button>
-
   </div>
-
 </div>
