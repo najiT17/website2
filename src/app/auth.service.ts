@@ -36,7 +36,11 @@ export class AuthService {
   }
 
   logout(): void {
-    if (this.isBrowser) localStorage.removeItem('token');
+    if (this.isBrowser) {
+        console.log("Called logout");
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+    }
   }
 
   getToken(): string | null {
@@ -50,4 +54,5 @@ export class AuthService {
   getUsername(): string | null {
     return this.isBrowser ? localStorage.getItem('username') : null;
   }
+
 }

@@ -8,16 +8,20 @@
  <div class="links">
 
 
-
-  <div class="links" *ngIf="!authService.isLoggedIn()">
+@if (!authService.isLoggedIn()) {
+  <div class="links">
     <a (click)="openAuth.emit('signup')">Sign Up</a>
     <a (click)="openAuth.emit('login')">Log In</a>
   </div>
-
-  <div class="links" *ngIf="authService.isLoggedIn()">
-    <span>{{ authService.getUsername() }}</span>
-    
+}
+  
+@if (authService.isLoggedIn()) {
+  <div class="links">
+    <h3>{{ authService.getUsername() }}</h3>
+    <button (click)="authService.logout()">Log out</button>
   </div>
+}
+  
 
 
 </div>
