@@ -1,0 +1,28 @@
+<div
+  class="upload-box"
+  [class.dragging]="isDragging"
+
+  (dragover)="onDragOver($event)"
+  (dragleave)="onDragLeave()"
+  (drop)="onDrop($event)"
+>
+
+  <p>📁</p>
+
+  <p>Drag & drop an image</p>
+
+  <p>or</p>
+
+  <label for="file-upload" class="custom-upload">
+    Choose file
+  </label>
+
+  <input
+    id="file-upload"
+    type="file"
+    hidden
+    accept="image/*"
+    (change)="onFileSelected($event)"
+  />
+
+</div>
