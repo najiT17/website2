@@ -19,6 +19,14 @@
   <div class="links">
     <h3>{{ authService.getUsername() }}</h3>
     <button (click)="authService.logout()">Log out</button>
+    <label for="excel-upload" style="cursor:pointer">
+      {{ isUploading ? 'Uploading...' : 'Upload Excel' }}
+    </label>
+    <input id="excel-upload" type="file" hidden accept=".xlsx,.xls" (change)="onExcelSelected($event)" />
+    @if (uploadMessage()) {
+      <span>{{ uploadMessage() }}</span>
+    }
+    
   </div>
 }
   
