@@ -25,5 +25,13 @@
     <button class="signup-btn" (click)="onSubmit()" [disabled]="isLoading">
       {{ isLoading ? 'Loading...' : (mode === 'signup' ? 'Sign up' : 'Login') }}
     </button>
+    <p class="switch-text">
+      {{ mode === 'signup'
+          ? 'Already have an account?'
+          : "Don't have an account?" }}
+      <span class="custom-link" (click)="switchMode.emit(mode === 'signup' ? 'login' : 'signup')">
+        {{ mode === 'signup' ? 'Log in' : 'Sign up' }}
+      </span>
+    </p>
   </div>
 </div>

@@ -27,6 +27,8 @@ import { CommonModule } from '@angular/common';
 export class App {
   modalType: 'login' | 'signup' | null = null;
 
+  isLoggedIn = false;
+
   openModal(type: 'login' | 'signup') {
     this.modalType = type;
   }
@@ -38,5 +40,16 @@ export class App {
   onAuthSuccess() {
   console.log('Logged in! Token:', localStorage.getItem('token'));
   this.closeModal();
-}
+  }
+  handleFileDrop(file: File) {
+
+    console.log(file);
+
+    if (!this.isLoggedIn) {
+
+      this.modalType = 'signup';
+
+    }
+
+  }
 }

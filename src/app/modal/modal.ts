@@ -15,6 +15,7 @@ export class ModalComponent {
   @Input() mode: 'login' | 'signup' = 'signup';
   @Output() close = new EventEmitter<void>();
   @Output() authSuccess = new EventEmitter<void>();
+  @Output() switchMode = new EventEmitter<'login' | 'signup'>();
 
   username = '';
   password = '';
