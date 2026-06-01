@@ -1,6 +1,6 @@
 <h2>Your inverters</h2>
 <div class="results">
-  @for (result of results().reverse(); track $index) {
+  @for (result of results(); track $index) {
     <div class="result" (click)="openSpecific(result.id)">
       <p class="model-text">{{ result.data.details.model }}</p>
       <p class="desc-text">{{ result.data.details.description }}</p>

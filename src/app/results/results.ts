@@ -16,10 +16,13 @@ export class Results {
     this.http.get('http://localhost:5000/get-all-jobs').subscribe({
       next: (res: any) => {
         this.results.set(
-          res.results.map((el: any) => ({
-            ...el,
-            data: JSON.parse(el.data),
-          })),
+          res.results
+            .map((el: any) => ({
+              ...el,
+              data: JSON.parse(el.data),
+            }))
+            .reverse()
+            .filter((el: any) => !el.model),
         );
       },
     });
