@@ -84,7 +84,7 @@ input {
 
 }
 .signup-btn:hover{
-  transform: scale(1.03);
+  transform: scale(1.02);
   transition: 0.1s;
 }
 .custom-link {
