@@ -22,7 +22,7 @@ export class Results {
               data: JSON.parse(el.data),
             }))
             .reverse()
-            .filter((el: any) => !el.model),
+            .filter((el: any) => !el.data.model),
         );
       },
     });
