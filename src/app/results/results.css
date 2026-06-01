@@ -1,0 +1,23 @@
+.result {
+  width: 20em;
+  height: 10em;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  outline: 3px solid #7fd2ba;
+}
+
+.model-text {
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.desc-text {
+  text-align: justify;
+}
+
+.results {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
