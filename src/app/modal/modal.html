@@ -6,8 +6,15 @@
       {{ mode === 'signup' ? 'Create an account' : 'Login' }}
     </h1>
     
-    <!-- <p class="message error" *ngIf="errorMessage">{{ errorMessage }}</p>
-    <p class="message success" *ngIf="successMessage">{{ successMessage }}</p> -->
+    @if (errorMessage()) {
+      <p class="message error">{{ errorMessage() }}</p>
+    }
+
+    @if (successMessage()) {
+      <p class="message success">{{ successMessage() }}</p>
+    }
+    
+    
 
     <input
       type="text"

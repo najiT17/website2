@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Output, EventEmitter, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -19,18 +19,19 @@ export class ModalComponent {
 
   username = '';
   password = '';
-  errorMessage = '';
-  successMessage = '';
+
+  errorMessage = signal('');
+  successMessage = signal('');
   isLoading = false;
 
   constructor(private authService: AuthService) {}
 
   onSubmit(): void {
-    this.errorMessage = '';
-    this.successMessage = '';
+    this.errorMessage.set('');
+    this.successMessage.set('');
 
     if (!this.username.trim() || !this.password.trim()) {
-      this.errorMessage = 'Please fill in all fields.';
+      this.errorMessage.set('Please fill in all fields.');
       return;
     }
 
@@ -43,7 +44,7 @@ export class ModalComponent {
     request$.subscribe({
       next: (res) => {
         this.isLoading = false;
-        this.successMessage = res.message;
+        this.successMessage.set(res.message);
         if (this.mode === 'login') {
           this.authSuccess.emit();
           this.close.emit();
@@ -56,7 +57,7 @@ export class ModalComponent {
       },
       error: (err) => {
         this.isLoading = false;
-        this.errorMessage = err.error?.message || 'Something went wrong.';
+        this.errorMessage.set(err.error?.message || 'Something went wrong.');
       },
     });
   }
