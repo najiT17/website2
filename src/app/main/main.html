@@ -1,0 +1,5 @@
+<app-navbar (openAuth)="openModal($event)"></app-navbar>
+@if (modalType) {
+  <app-modal [mode]="modalType" (close)="closeModal()" (authSuccess)="onAuthSuccess()"></app-modal>
+}
+<router-outlet></router-outlet>

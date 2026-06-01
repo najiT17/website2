@@ -1,9 +1,2 @@
-<app-navbar (openAuth)="openModal($event)"></app-navbar>
 <app-hero></app-hero>
 <app-upload-box></app-upload-box>
-<app-modal
-  *ngIf="modalType"
-  [mode]="modalType"
-  (close)="closeModal()"
-  (authSuccess)="onAuthSuccess()"
-></app-modal>
