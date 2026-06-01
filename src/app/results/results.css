@@ -1,6 +1,6 @@
 .result {
   width: 20em;
-  height: 10em;
+  min-height: 10em;
   color: white;
   padding: 10px;
   border-radius: 5px;

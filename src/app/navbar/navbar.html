@@ -17,7 +17,7 @@
     @if (authService.isLoggedIn()) {
       <div class="links">
         <h3>{{ authService.getUsername() }}</h3>
-        <a class="logout" (click)="authService.logout()">Log out</a>
+        <a class="logout" (click)="authService.logout()" href="/">Log out</a>
         <label for="excel-upload" style="cursor: pointer">
           {{ isUploading ? 'Uploading...' : 'Upload Excel' }}
         </label>
