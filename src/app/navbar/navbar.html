@@ -19,7 +19,7 @@
         <h3>{{ authService.getUsername() }}</h3>
         <a class="logout" (click)="authService.logout()" href="/">Log out</a>
         <label for="excel-upload" style="cursor: pointer">
-          {{ isUploading ? 'Uploading...' : 'Upload Excel' }}
+          {{ isUploading() ? 'Uploading...' : 'Upload Excel' }}
         </label>
         <input
           id="excel-upload"
@@ -28,9 +28,7 @@
           accept=".xlsx,.xls"
           (change)="onExcelSelected($event)"
         />
-        @if (uploadMessage()) {
-          <span>{{ uploadMessage() }}</span>
-        }
+
         <a href="/results">Inverters</a>
       </div>
     }

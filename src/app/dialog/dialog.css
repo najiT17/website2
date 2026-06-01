@@ -1,0 +1,146 @@
+.background {
+  min-width: 400px;
+  max-width: 500px;
+  padding: 24px;
+  border-radius: 16px;
+  background-color: #1d2230;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+  border-top: 6px solid;
+  animation: dialogIn 0.2s ease;
+}
+
+.background h2 {
+  margin: 0 0 12px;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.background p {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.actions button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.actions button:hover {
+  transform: translateY(-1px);
+}
+
+.actions button:active {
+  transform: translateY(0);
+}
+
+.secondary {
+  background: #f1f5f9;
+  color: #334155;
+}
+
+.secondary:hover {
+  background: #e2e8f0;
+}
+
+.primary {
+  color: white;
+}
+
+/* SUCCESS */
+
+.success {
+  border-color: #22c55e;
+}
+
+.success h2 {
+  color: #22c55e;
+}
+
+.success .primary {
+  background: #22c55e;
+}
+
+.success .primary:hover {
+  background: #16a34a;
+}
+
+/* ERROR */
+
+.error {
+  border-color: #ef4444;
+}
+
+.error h2 {
+  color: #dc2626;
+}
+
+.error .primary {
+  background: #ef4444;
+}
+
+.error .primary:hover {
+  background: #dc2626;
+}
+
+/* CONFIRM */
+
+.confirm {
+  border-color: #f59e0b;
+}
+
+.confirm h2 {
+  color: #d97706;
+}
+
+.confirm .primary {
+  background: #f59e0b;
+}
+
+.confirm .primary:hover {
+  background: #d97706;
+}
+
+/* INFO */
+
+.info {
+  border-color: #3b82f6;
+}
+
+.info h2 {
+  color: #2563eb;
+}
+
+.info .primary {
+  background: #3b82f6;
+}
+
+.info .primary:hover {
+  background: #2563eb;
+}
+
+@keyframes dialogIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
