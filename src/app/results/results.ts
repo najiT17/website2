@@ -23,13 +23,17 @@ export class Results {
             }))
             .reverse()
             .filter((el: any) => {
-              console.log(
-                'Cheking if null : ',
-                el.data.details.model,
-                'is null',
-                !el.data.details.model,
-              );
-              return el.data.details.model;
+              try {
+                console.log(
+                  'Cheking if null : ',
+                  el.data.details.model,
+                  'is null',
+                  !el.data.details.model,
+                );
+                return el.data.details.model;
+              } catch {
+                return false;
+              }
             }),
         );
       },
