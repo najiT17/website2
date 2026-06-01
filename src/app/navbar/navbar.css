@@ -4,9 +4,11 @@
   align-items: center;
   padding-left: 16px;
   padding-right: 16px;
-  color: #7FD2BA;
+  color: #7fd2ba;
 }
-
+.nodefault {
+  all: unset;
+}
 .links {
   display: flex;
   gap: 20px;
@@ -14,7 +16,7 @@
 }
 
 .links a {
-  color: #7FD2BA;
+  color: #7fd2ba;
   cursor: pointer;
   font-size: 18px;
   text-decoration: underline;
@@ -22,7 +24,6 @@
 }
 
 .links a:hover {
-
   transform: scale(1.03);
 }
 

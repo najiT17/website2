@@ -1,37 +1,38 @@
 <nav class="navbar">
+  <a href="/" class="nodefault">
+    <div class="logo">
+      <h2>The untitled inverter thingy</h2>
+      <p>Made with ♥ for autistic people.</p>
+    </div>
+  </a>
 
-  <div class="logo">
-    <h2>The untitled inverter thingy</h2>
-    <p>Made with ♥ for autistic people.</p>
-  </div>
-
- <div class="links">
-
-
-@if (!authService.isLoggedIn()) {
   <div class="links">
-    <a (click)="openAuth.emit('signup')">Sign Up</a>
-    <a (click)="openAuth.emit('login')">Log In</a>
-  </div>
-}
-  
-@if (authService.isLoggedIn()) {
-  <div class="links">
-    <h3>{{ authService.getUsername() }}</h3>
-    <a class="logout" (click)="authService.logout()">Log out</a>
-    <label for="excel-upload" style="cursor:pointer">
-      {{ isUploading ? 'Uploading...' : 'Upload Excel' }}
-    </label>
-    <input id="excel-upload" type="file" hidden accept=".xlsx,.xls" (change)="onExcelSelected($event)" />
-    @if (uploadMessage()) {
-      <span>{{ uploadMessage() }}</span>
+    @if (!authService.isLoggedIn()) {
+      <div class="links">
+        <a (click)="openAuth.emit('signup')">Sign Up</a>
+        <a (click)="openAuth.emit('login')">Log In</a>
+      </div>
     }
-    
+
+    @if (authService.isLoggedIn()) {
+      <div class="links">
+        <h3>{{ authService.getUsername() }}</h3>
+        <a class="logout" (click)="authService.logout()">Log out</a>
+        <label for="excel-upload" style="cursor: pointer">
+          {{ isUploading ? 'Uploading...' : 'Upload Excel' }}
+        </label>
+        <input
+          id="excel-upload"
+          type="file"
+          hidden
+          accept=".xlsx,.xls"
+          (change)="onExcelSelected($event)"
+        />
+        @if (uploadMessage()) {
+          <span>{{ uploadMessage() }}</span>
+        }
+        <a href="/results">Inverters</a>
+      </div>
+    }
   </div>
-}
-  
-
-
-</div>
-
 </nav>
