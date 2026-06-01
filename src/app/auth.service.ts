@@ -22,7 +22,13 @@ export class AuthService {
   }
 
   register(username: string, password: string): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.baseUrl}/register`, { username, password });
+    return this.http.post<AuthResponse>(`${this.baseUrl}/register`, { username, password }).pipe(
+      tap(res => {
+        if (res.token && this.isBrowser) {
+          localStorage.setItem('token', res.token);
+        }
+      })
+    );
   }
 
   login(username: string, password: string): Observable<AuthResponse> {

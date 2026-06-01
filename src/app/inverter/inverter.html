@@ -1,72 +1,86 @@
 @if (!isLoading()) {
-  <div class="upload-box">
-    <div class="result-card">
-      <div class="result-header">
-        <div
-          class="verified-badge"
-          [class.verified]="result()?.inverter_verified"
-          [class.unverified]="!result()?.inverter_verified"
-        >
-          {{ result()?.inverter_verified ? '✓ Verified' : '~ Unverified' }}
-        </div>
-        <h2 class="result-manufacturer">{{ result()?.details.manufacturer }}</h2>
-        <h3 class="result-model">{{ result()?.details.model }}</h3>
-        <p class="result-category">{{ result()?.details.category }}</p>
+  <div class="main-center">
+    
+    <div class="image-result-card">
+      <div class="image-box">
+        <img class="image" [attr.src]="img_url() | secure | async" alt="" />
       </div>
-      <p class="result-description">{{ result()?.details.description }}</p>
-      <div class="result-specs">
-        @if (result()?.details.rated_power_w){
-        <div class="spec">
-          <span class="spec-label">Rated power</span>
-          <span class="spec-value">{{ result()?.details.rated_power_w }}W</span>
-        </div>
-        }
-        @if (result()?.details.max_input_voltage_v){
-        <div class="spec">
-          <span class="spec-label">Max voltage</span>
-          <span class="spec-value">{{ result()?.details.max_input_voltage_v }}V</span>
-        </div>
-        }
-        @if (result()?.details.phase){
-        <div class="spec">
-          <span class="spec-label">Phase</span>
-          <span class="spec-value">{{ result()?.details.phase }}</span>
-        </div>
-      }
-        <div class="spec">
-          <span class="spec-label">Battery</span>
-          <span class="spec-value">{{
-            result()?.details.battery_compatible ? 'Compatible' : 'Not compatible'
-          }}</span>
-        </div>
-        <div class="spec">
-          <span class="spec-label">Hybrid</span>
-          <span class="spec-value">{{ result()?.details.hybrid ? 'Yes' : 'No' }}</span>
+      
+      <div class="upload-box">
+        <div class="result-card">
+          <div class="result-header">
+            <div
+              class="verified-badge"
+              [class.verified]="result()?.inverter_verified"
+              [class.unverified]="!result()?.inverter_verified"
+            >
+              {{ result()?.inverter_verified ? '✓ Verified' : '~ Unverified' }}
+            </div>
+            <h2 class="result-manufacturer">{{ result()?.details.manufacturer }}</h2>
+            <h3 class="result-model">{{ result()?.details.model }}</h3>
+            <p class="result-category">{{ result()?.details.category }}</p>
+          </div>
+          <p class="result-description">{{ result()?.details.description }}</p>
+          <div class="result-specs">
+            @if (result()?.details.rated_power_w){
+            <div class="spec">
+              <span class="spec-label">Rated power</span>
+              <span class="spec-value">{{ result()?.details.rated_power_w }}W</span>
+            </div>
+            }
+            @if (result()?.details.max_input_voltage_v){
+            <div class="spec">
+              <span class="spec-label">Max voltage</span>
+              <span class="spec-value">{{ result()?.details.max_input_voltage_v }}V</span>
+            </div>
+            }
+            @if (result()?.details.phase){
+            <div class="spec">
+              <span class="spec-label">Phase</span>
+              <span class="spec-value">{{ result()?.details.phase }}</span>
+            </div>
+          }
+            <div class="spec">
+              <span class="spec-label">Battery</span>
+              <span class="spec-value">{{
+                result()?.details.battery_compatible ? 'Compatible' : 'Not compatible'
+              }}</span>
+            </div>
+            <div class="spec">
+              <span class="spec-label">Hybrid</span>
+              <span class="spec-value">{{ result()?.details.hybrid ? 'Yes' : 'No' }}</span>
+            </div>
+          </div>
+          <div class="result-actions">
+            @if(result()?.details.datasheet_url){
+            <a
+              [href]="result()?.details.datasheet_url"
+              target="_blank"
+              class="action-link datasheet"
+            >
+              📄 Datasheet
+            </a>
+          }
+          @if (result()?.details.source_url){
+            <a
+              [href]="result()?.details.source_url"
+              target="_blank"
+              class="action-link source"
+            >
+              🔗 Source
+            </a>
+          }
+          </div>
         </div>
       </div>
-      <div class="result-actions">
-        @if(result()?.details.datasheet_url){
-        <a
-          [href]="result()?.details.datasheet_url"
-          target="_blank"
-          class="action-link datasheet"
-        >
-          📄 Datasheet
-        </a>
-      }
-      @if (result()?.details.source_url){
-        <a
-          [href]="result()?.details.source_url"
-          target="_blank"
-          class="action-link source"
-        >
-          🔗 Source
-        </a>
-      }
-      </div>
+      
     </div>
+
+
   </div>
-  <img [attr.src]="img_url() | secure | async" alt="" />
+  
+  
+  
 } @else {
   <div class="loading">
     <span class="loader"></span>
