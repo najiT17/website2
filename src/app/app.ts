@@ -13,13 +13,10 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
 
   imports: [
-    NavbarComponent,
     HeroComponent,
     UploadBoxComponent,
-    ModalComponent,
-    CommonModule,
-    RouterOutlet,
-  ],
+    CommonModule
+],
 
   templateUrl: './app.html',
   styleUrls: ['./app.css'],

@@ -52,7 +52,6 @@
   min-height: 300px;
   border: 2px dashed #345d5d;
   border-radius: 20px;
-  margin: 50px auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -293,4 +292,38 @@
   color: #f07070;
   margin: 0;
   text-align: center;
+}
+
+
+.image-result-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+
+}
+
+
+
+.image {
+
+  width: 250px;
+  height: 350px;
+  object-fit: contain;
+  flex-shrink: 0;
+  
+  
+}
+
+.image-box {
+  border: 2px dashed #345d5d;
+  margin-right: 48px;
+  padding: 0px 16px 0px 16px;
+  border-radius: 20px;
+}
+
+.main-center {
+  display: grid;
+  place-items: center;
+  min-height: 70vh;
 }
