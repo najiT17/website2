@@ -1,0 +1,296 @@
+.loading {
+  display: grid;
+  place-items: center;
+  width: calc(100vw - 20px);
+  height: 70vh;
+}
+
+.loader {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgb(220, 220, 220) 40%,
+    rgb(170, 170, 170) 98%,
+    rgb(10, 10, 10) 100%
+  );
+  border-radius: 50%;
+  position: relative;
+}
+
+.loader:before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  border-bottom: 0 solid #ffffff05;
+  box-shadow:
+    0 -10px 20px 20px #ffffff40 inset,
+    0 -5px 15px 10px #ffffff50 inset,
+    0 -2px 5px #ffffff80 inset,
+    0 -3px 2px #ffffffbb inset,
+    0 2px 0px #ffffff,
+    0 2px 3px #ffffff,
+    0 5px 5px #ffffff90,
+    0 10px 15px #ffffff60,
+    0 10px 20px 20px #ffffff40;
+  filter: blur(3px);
+  animation: 2s rotate linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Base box ── */
+.upload-box {
+  width: 340px;
+  min-height: 300px;
+  border: 2px dashed #345d5d;
+  border-radius: 20px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition:
+    border-color 0.2s,
+    transform 0.2s,
+    min-height 0.4s;
+  color: #7fd2ba;
+  padding: 28px 24px;
+  box-sizing: border-box;
+}
+
+.upload-box.dragging {
+  background: rgba(79, 209, 197, 0.07);
+  border-color: #7fd2ba;
+  transform: scale(1.02);
+}
+
+.upload-box.has-result {
+  min-height: unset;
+  border-style: solid;
+  border-color: #345d5d;
+  align-items: stretch;
+}
+
+/* ── Idle state ── */
+.upload-idle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.upload-icon {
+  font-size: 36px;
+  margin-bottom: 4px;
+}
+
+.upload-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+  color: #7fd2ba;
+}
+
+.upload-sub {
+  font-size: 13px;
+  margin: 0;
+  opacity: 0.5;
+}
+
+/* ── Loading state ── */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(127, 210, 186, 0.2);
+  border-top-color: #7fd2ba;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pa nevem prekopiran itz sruztga fila */
+
+.loading-text {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #7fd2ba;
+}
+
+.loading-sub {
+  margin: 0;
+  font-size: 12px;
+  opacity: 0.45;
+}
+
+/* ── Result card ── */
+.result-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.result-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.verified-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  width: fit-content;
+  margin-bottom: 6px;
+}
+
+.verified-badge.verified {
+  background: rgba(127, 210, 186, 0.15);
+  color: #7fd2ba;
+  border: 1px solid #345d5d;
+}
+
+.verified-badge.unverified {
+  background: rgba(255, 200, 100, 0.1);
+  color: #f0c060;
+  border: 1px solid rgba(240, 192, 96, 0.3);
+}
+
+.result-manufacturer {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  color: #7fd2ba;
+  line-height: 1.2;
+}
+
+.result-model {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+  color: #7fd2ba;
+  opacity: 0.7;
+}
+
+.result-category {
+  font-size: 12px;
+  margin: 4px 0 0;
+  opacity: 0.45;
+  text-transform: capitalize;
+}
+
+.result-description {
+  font-size: 13px;
+  line-height: 1.6;
+  opacity: 0.7;
+  margin: 0;
+  border-left: 2px solid #345d5d;
+  padding-left: 12px;
+}
+
+/* ── Specs grid ── */
+.result-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.spec {
+  background: rgba(52, 93, 93, 0.25);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.spec-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  opacity: 0.45;
+}
+
+.spec-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #7fd2ba;
+  text-transform: capitalize;
+}
+
+/* ── Actions ── */
+.result-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.action-link {
+  font-size: 13px;
+  color: #7fd2ba;
+  text-decoration: none;
+  padding: 7px 14px;
+  border: 1px solid #345d5d;
+  border-radius: 8px;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+
+.action-link:hover {
+  background: rgba(127, 210, 186, 0.1);
+  border-color: #7fd2ba;
+}
+
+/* ── Shared upload label ── */
+.custom-upload {
+  color: #7fd2ba;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.custom-upload:hover {
+  opacity: 0.7;
+}
+
+.try-again {
+  font-size: 12px;
+  opacity: 0.5;
+  text-align: center;
+}
+
+/* ── Error ── */
+.error-msg {
+  font-size: 13px;
+  color: #f07070;
+  margin: 0;
+  text-align: center;
+}

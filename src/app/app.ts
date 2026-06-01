@@ -5,6 +5,7 @@ import { HeroComponent } from './hero/hero';
 import { UploadBoxComponent } from './upload-box/upload-box';
 import { ModalComponent } from './modal/modal';
 import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -17,13 +18,12 @@ import { CommonModule } from '@angular/common';
     UploadBoxComponent,
     ModalComponent,
     CommonModule,
-
+    RouterOutlet,
   ],
 
   templateUrl: './app.html',
-  styleUrls: ['./app.css']
+  styleUrls: ['./app.css'],
 })
-
 export class App {
   modalType: 'login' | 'signup' | null = null;
 
@@ -38,18 +38,9 @@ export class App {
   }
 
   onAuthSuccess() {
-  console.log('Logged in! Token:', localStorage.getItem('token'));
-  this.closeModal();
+    console.log('Logged in! Token:', localStorage.getItem('token'));
+    this.closeModal();
   }
-  handleFileDrop(file: File) {
 
-    console.log(file);
-
-    if (!this.isLoggedIn) {
-
-      this.modalType = 'signup';
-
-    }
-
-  }
+  // A lot of duplication because Domen vibe coded this thingy and ofcourse it didnt work out so now all code is mess
 }
