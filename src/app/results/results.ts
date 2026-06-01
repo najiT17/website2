@@ -22,7 +22,10 @@ export class Results {
               data: JSON.parse(el.data),
             }))
             .reverse()
-            .filter((el: any) => !el.data.model),
+            .filter((el: any) => {
+              !el.data.model;
+              console.log('Cheking if null : ', el.data.model, 'is null', !el.data.model);
+            }),
         );
       },
     });
