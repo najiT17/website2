@@ -27,8 +27,12 @@ export class NavbarComponent {
   }
 
   onExcelSelected(event: Event) {
+    console.log('Excel selected');
+
     const input = event.target as HTMLInputElement;
     if (!input.files?.length) return;
+
+    console.log('There are files');
 
     const formData = new FormData();
     formData.append('file', input.files[0]);

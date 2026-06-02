@@ -22,6 +22,8 @@
           {{ isUploading() ? 'Uploading...' : 'Upload Excel' }}
         </label>
         <input
+          #fileInput
+          (click)="fileInput.value = ''"
           id="excel-upload"
           type="file"
           hidden
