@@ -1,4 +1,5 @@
-<app-hero></app-hero>
 @if (auth.isLoggedIn()) {
   <app-upload-box></app-upload-box>
+} @else {
+  <app-hero></app-hero>
 }

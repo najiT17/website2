@@ -1,5 +1,4 @@
 .overlay {
-
   position: fixed;
 
   top: 0;
@@ -8,7 +7,7 @@
   width: 100%;
   height: 100%;
 
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
 
   display: flex;
 
@@ -19,7 +18,6 @@
 }
 
 .modal {
-
   width: 400px;
 
   background: #1d2230;
@@ -33,14 +31,13 @@
 
   gap: 20px;
 
-  color: #7FD2BA;
+  color: #7fd2ba;
 
   position: relative;
 
   text-align: center;
 }
 .close {
-
   position: absolute;
 
   top: 20px;
@@ -49,21 +46,20 @@
   background: none;
   border: none;
 
-  color: #7FD2BA;
+  color: #7fd2ba;
 
   cursor: pointer;
 }
-.close:hover{
+.close:hover {
   transition: 0.1;
   transform: scale(1.03);
 }
 input {
-
   padding: 12px;
 
   border-radius: 10px;
 
-  border: 1px solid #7FD2BA;
+  border: 1px solid #7fd2ba;
 
   background: transparent;
 
@@ -71,36 +67,43 @@ input {
 }
 
 .signup-btn {
-
   padding: 14px;
 
   border: none;
 
   border-radius: 12px;
 
-  background: #7FD2BA;
+  background: #7fd2ba;
 
   cursor: pointer;
-
 }
-.signup-btn:hover{
+.signup-btn:hover {
   transform: scale(1.02);
   transition: 0.1s;
 }
 .custom-link {
-  color: #7FD2BA;
+  color: #7fd2ba;
   cursor: pointer;
   text-decoration: none;
   font: inherit;
   text-align: center;
-  
 }
 
 .custom-link:hover {
   text-decoration: underline;
 }
 
-.switch-text{
+.switch-text {
   opacity: 0.8;
   text-align: center;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
 }

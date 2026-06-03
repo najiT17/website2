@@ -5,7 +5,7 @@
     <h1>
       {{ mode === 'signup' ? 'Create an account' : 'Login' }}
     </h1>
-    
+
     @if (errorMessage()) {
       <p class="message error">{{ errorMessage() }}</p>
     }
@@ -13,29 +13,31 @@
     @if (successMessage()) {
       <p class="message success">{{ successMessage() }}</p>
     }
-    
-    
 
-    <input
-      type="text"
-      placeholder="Username"
-      [(ngModel)]="username"
-      [disabled]="isLoading"
-    />
-    <input
-      type="password"
-      placeholder="Password"
-      [(ngModel)]="password"
-      [disabled]="isLoading"
-    />
+    <form (ngSubmit)="onSubmit()">
+      <input
+        type="text"
+        placeholder="Username"
+        [(ngModel)]="username"
+        name="username"
+        [disabled]="isLoading"
+      />
 
-    <button class="signup-btn" (click)="onSubmit()" [disabled]="isLoading">
-      {{ isLoading ? 'Loading...' : (mode === 'signup' ? 'Sign up' : 'Login') }}
-    </button>
+      <input
+        type="password"
+        placeholder="Password"
+        [(ngModel)]="password"
+        name="password"
+        [disabled]="isLoading"
+      />
+
+      <button type="submit" class="signup-btn" [disabled]="isLoading">
+        {{ isLoading ? 'Loading...' : mode === 'signup' ? 'Sign up' : 'Login' }}
+      </button>
+    </form>
+
     <p class="switch-text">
-      {{ mode === 'signup'
-          ? 'Already have an account?'
-          : "Don't have an account?" }}
+      {{ mode === 'signup' ? 'Already have an account?' : "Don't have an account?" }}
       <span class="custom-link" (click)="switchMode.emit(mode === 'signup' ? 'login' : 'signup')">
         {{ mode === 'signup' ? 'Log in' : 'Sign up' }}
       </span>
