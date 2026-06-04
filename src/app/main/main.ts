@@ -23,7 +23,6 @@ export class Main {
   }
 
   onAuthSuccess() {
-    console.log('Logged in! Token:', localStorage.getItem('token'));
     this.closeModal();
   }
 }
